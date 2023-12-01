@@ -1,24 +1,28 @@
 use rand::random;
 use crate::surface::Surface;
 
+
+#[derive(Clone)]
 pub struct Layer {
    map_: Vec<Vec<bool>>,
    char_: char,
    width_: usize,
    height_: usize,
+   name_: String,
 }
 
 impl Layer {
-   pub fn new(char_: char, w:usize, h:usize) -> Layer {
+   pub fn new(char_: char, width:usize, height:usize, name : String) -> Layer {
        return Layer {
-           map_: vec![vec![false;w];h],
+           map_: vec![vec![false;width];height],
            char_,
-           width_: w,
-           height_: h,
+           width_: width,
+           height_: height,
+           name_: name,
        }
    }
 
-   pub fn random(char_: char, w:usize, h:usize) -> Layer {
+   pub fn random(char_: char, w:usize, h:usize, name : String) -> Layer {
        let mut map_ = vec![vec![false;w];h];
 
        for y in 0..h {
@@ -32,15 +36,27 @@ impl Layer {
            char_,
            width_: w,
            height_: h,
+           name_ : name,
        }
    }
 
-   pub fn from(map_: Vec<Vec<bool>>, char_: Option<char>) -> Layer{
+   pub fn from(map_: Vec<Vec<bool>>, char_: Option<char>, name : String) -> Layer{
        return Layer {
            map_ : map_.clone(),
            char_: char_.unwrap_or('#'),
            width_: map_[0].len(),
            height_: map_.len(),
+           name_ : name,
+       }
+   }
+
+   pub fn non() -> Layer {
+       return Layer {
+           map_: vec![vec![false;0];0],
+           char_: ' ',
+           width_: 0,
+           height_: 0,
+           name_: String::from(""),
        }
    }
 
