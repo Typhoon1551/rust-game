@@ -1,3 +1,9 @@
 # rust-game
 
-#### A game made to run in the terminal written in rust
+## A terminal game engine written in rust
+
+( hello
+. hello
+= hello
+# hello
+
