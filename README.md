@@ -1,9 +1,5 @@
 # rust-game
+A terminal game engine written in rust
 
-## A terminal game engine written in rust
-
-( hello (
-. hello .
-= hello =
-# hello #
-
+## Usage
++ the basic screen renderer item is a 'scene'
